@@ -29,6 +29,8 @@
                     patchelf
                 ];
 
+                buildInputs = with pkgs; [ fmt boost ];
+
                 cmakeFlags = [ 
                     # "-DCMAKE_POLICY_VERSION_MINIMUM=3.5" 
                     # Tells CMake to use the final installation RPATH even during the build phase
