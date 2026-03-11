@@ -20,14 +20,14 @@ stdenv.mkDerivation (finalAttrs: {
     system = "x86_64-linux";
     version = "1.3.10";
 
-    src = ./.;
+    #src = ./.;
 
-   #fetchFromGitHub {
-   #    owner = "schnorr";
-   #    repo = "pajeng";
-   #    rev =  "2926ab4208eb5d8b11f8fa33f35c2d40c86480f9";# finalAttrs.version;
-   #    hash = "sha256-g3aT5SNwrhk7d/f5ElJfSqXQ6MFnsuVQ0fSpbiH94Y0=";
-   #};
+   src = fetchFromGitHub {
+       owner = "schnorr";
+       repo = "pajeng";
+       rev =  "2926ab4208eb5d8b11f8fa33f35c2d40c86480f9";# finalAttrs.version;
+       hash = "sha256-g3aT5SNwrhk7d/f5ElJfSqXQ6MFnsuVQ0fSpbiH94Y0=";
+   };
     nativeBuildInputs = [
         perl
 	cmake # adding cmake as a buildinput does everything else automatically
