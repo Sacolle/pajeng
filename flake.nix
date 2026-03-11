@@ -9,9 +9,7 @@
     outputs = { self, nixpkgs, flake-utils }: flake-utils.lib.eachDefaultSystem (system:
         let
             pkgs = import nixpkgs { inherit system; };
-        in
-        {
-            packages.pajeng = pkgs.stdenv.mkDerivation (finalAttrs: {
+            pajeng = pkgs.stdenv.mkDerivation (finalAttrs: {
                 pname = "pajeng";
                 version = "1.3.10";
                 inherit system;
@@ -57,11 +55,11 @@
 
                 doCheck = true;
             });
-
-
-            defaultPackage = self.packages.${system}.pajeng;
-            devShells.default = pkgs.mkShell {
-                buildInputs = [ self.packages.${system}.pajeng ];
+        in
+        {
+            packages = {
+                default = pajeng;
+                inherit pajeng;
             };
         }
     );
